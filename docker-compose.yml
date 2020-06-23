@@ -1,0 +1,28 @@
+version: '3'
+services:
+    apache:
+        build: docker/apache
+        container_name: symfonyReactApache
+        ports:
+          - 80:80
+        volumes:
+          - ./docker/config/vhosts:/etc/apache2/sites-enabled
+          - ./:/home/www/symfonyReactApi
+        depends_on:
+          - php
+
+    php:
+        build: docker/php
+        container_name: symfonyReactPhp
+        volumes:
+          - ./:/home/www/symfonyReactApi
+        environment:
+          - maildev_host=sf4_maildev
+        depends_on:
+          - maildev
+
+    maildev:
+        image: djfarrelly/maildev
+        container_name: symfonyReactMaildev
+        ports:
+          - 8001:80
