@@ -1,6 +1,12 @@
 /public/build/fonts/glyphicons-*
 /public/build/images/glyphicons-*
 
+###> phpstorm ###
+/.idea
+/.phpstorm.meta.php
+/_ide_helper.php
+###> phpstorm ###
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
